@@ -92,17 +92,14 @@ pointsInPolygons(
 
 library(raster) #raster as usual
 library(dismo) #also species distribution modelling (get this for rgbif function)
-library(maptools) #for terrority map 
 #library(rgbif)
 library(rgdal) #for readOGR
 library(sp) #to transform crs
 library(cartography) #data visualization 
 
 ####TAKE SPECIES DATA####
-#plot world to cut extention for europe
-data(wrld_simpl)
- plot(wrld_simpl)
-e<- drawExtent() #pick Europe
+# cut extention for europe
+e<- extent(-8.250667, 32.14889, 34.66667, 66.28333)
 tardigrade<- gbif("Eutardigrada",ext=e, sp=T, removeZeros=T, download=T)
 dim(tardigrade) #for the number of results
 # tardigrade now is spatial point data frame, because argument sp=T, no need to extract long, lat as the other day 
@@ -132,7 +129,7 @@ proj4string(tardigrade)
 #proj4string(tardigrade)<- georef
 
 #this way is correct, choose CRS epsg:4326 (WGS84 (EPSG: 4326)
-# Commonly used by organizations that provide GIS data for the entire globe or many countries. CRS used by Google Earth
+# Commonly used by organizations that provide GIS data for the entire globe or many countries. CRS used by Google Earth.  EPSG 4326 defines a full coordinate reference system, providing spatial meaning to otherwise meaningless pairs of numbers. It means "latitude and longitude coordinates on the WGS84 reference ellipsoid."
 
 #with sp products that already has CRS set up, change it this way
 biogeo<- spTransform(biogeo, CRS("+init=epsg:4326"))
@@ -178,4 +175,8 @@ layoutLayer(title = "Tardigrade Occurrences",
              author =  paste0("Bui Thu Uyen"),
              scale = 500, frame = TRUE, col = "#688994")
 north("topleft")
+
+# thử với sf # not helping in plotting faster propSymbolsLayer(x = mtq, var = "P13_POP",
+ legend.title.txt = "Population",
+ col = "#a7dfb4")
 
