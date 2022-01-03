@@ -56,7 +56,7 @@ biogeo@data$COLOUR<- c("#EF9A9A", "#F48FB1", "#CE93D8", "#B39DDB", "#90CAF9", "#
 #I have to change CRS because I can see biogeo'crs is EPSG:3035-ETRS89, and loca-tardi is not
 
 plot (biogeo, col=biogeo@data$COLOUR)
-plot(loca_tardigrade[,1],loca_tardigrade[,2],col="red", pch=20, add=T)
+plot(tardigrade,col="red", pch=20, add=T)
 legend("bottomright",   
       legend = levels(biogeo@data$code), 
       fill = biogeo@data$COLOUR) 
@@ -108,6 +108,11 @@ plot(tardigrade)
 ####PLOT BIOGEO####
 biogeo<-readOGR("~/Desktop/lab/BiogeoRegions2016.shp")
 biogeo@data
+
+#first look 
+plot (biogeo, col=biogeo@data$COLOUR)
+plot(tardigrade,col="red", pch=20, add=T)
+#cant distinguish biogeo 
 
 #adding color to each polygon
 	#I wanted to use viridis, but it shows error saying that replacement has 19 rows while dataset has 12 rows => sadly i have to create another color rampallet
@@ -164,19 +169,19 @@ propSymbolsLayer(
    spdfid = "code", 
    dfid = "code", 
    var = "tardigrade_occ", 
-   legend.pos = "topright", 
+   legend.pos = "bottomright",
    col = "red4", 
    border = "white", 
-   legend.title.txt = "Occurrences" 
+   legend.title.txt = "Occurrences",
+   legend.title.cex=1.2 ,
+   legend.values.cex=1
  )
-legend("topright", legend= biogeo@data$code,fill = biogeo@data$COLOUR)
+legend("topleft", legend= biogeo@data$code,fill = biogeo@data$COLOUR, cex=0.6)
 layoutLayer(title = "Tardigrade Occurrences",
-             sources = "Data: EEA, GBIF 2021",
-             author =  paste0("Bui Thu Uyen"),
-             scale = 500, frame = TRUE, col = "#688994")
-north("topleft")
+             sources = "Data: EEA 2016, GBIF 2021",
+             author =  paste0("© Bui Thu Uyen"),
+             scale = 300, frame = TRUE, col = "#688994")
+north("topright")
 
-# thử với sf # not helping in plotting faster propSymbolsLayer(x = mtq, var = "P13_POP",
- legend.title.txt = "Population",
- col = "#a7dfb4")
+
 
