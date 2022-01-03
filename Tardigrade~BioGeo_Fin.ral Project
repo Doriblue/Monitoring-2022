@@ -155,7 +155,7 @@ res<- over(tardigrade, biogeo)
 #continue line 142
 res_tab<- table(res$name)
 #take the result from res_tab to build a vector of result, with available results relevent to biogeo fields of biogeo@data, not availale biogeo result=0
-tardigrade_occ<- c(221,0, 2, 1060, 0, 388,101,0, 17, 73,0,0)
+tardigrade_occ<- c(184,0, 0, 1004, 0, 390,101,0, 17, 73,0,3)
 #bind new vector to the data frame
 biogeo@data$tardigrade_occ<- tardigrade_occ
 biogeo@data
