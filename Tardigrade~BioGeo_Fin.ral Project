@@ -97,6 +97,8 @@ library(rgdal) #for readOGR
 library(sp) #to transform crs
 library(cartography) #data visualization 
 
+setwd("/Users/buithuuyen/Desktop/lab")
+
 ####TAKE SPECIES DATA####
 # cut extention for europe
 e<- extent(-8.250667, 32.14889, 34.66667, 66.28333)
