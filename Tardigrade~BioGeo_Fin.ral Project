@@ -90,9 +90,7 @@ pointsInPolygons(
 ###################DAY N of trying-SUCESSFULL DAY_I will never forget this day!!! 31/12/21 ######################
 
 
-library(raster) #raster as usual
 library(dismo) #also species distribution modelling (get this for rgbif function)
-#library(rgbif)
 library(rgdal) #for readOGR
 library(sp) #to transform crs
 library(cartography) #data visualization 
